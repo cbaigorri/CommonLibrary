@@ -50,13 +50,37 @@ class MediaController extends EventEmitter
   setVolume: (value)->
     @media.volume = value
 
-  # Set Current Time
-  currentTime: (value)->
-    @media.currentTime = @media.duration * value
-
   # Mute
   mute: ()->
     @setVolume 0
+
+  # Fade In
+  fadeIn: (duration=1000, steps=10)->
+    vol = @media.volume
+    clearInterval @volIntervalId
+    @volIntervalId = setInterval ()=>
+        if vol < 1
+          vol += 0.05
+          @media.volume = vol.toFixed(2)
+        else
+          clearInterval @volIntervalId
+      , duration/steps
+
+  # Fade Out
+  fadeOut: (duration=1000, steps=10)->
+    vol = @media.volume
+    clearInterval @volIntervalId
+    @volIntervalId = setInterval ()=>
+        if vol > 0
+          vol -= 0.05
+          @media.volume = vol.toFixed(2)
+        else
+          clearInterval @volIntervalId
+      , duration/steps
+
+  # Set Current Time
+  currentTime: (value)->
+    @media.currentTime = @media.duration * value
 
   # Load
   load: (src)->

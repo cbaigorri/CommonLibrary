@@ -34,4 +34,10 @@ $ ->
     s.currentTime e.currentTarget.value
     $('.seek').attr('max', e.currentTarget.duration)
 
+  $('.fadeIn').bind 'click', (e)->
+    s.fadeIn()
+
+  $('.fadeOut').bind 'click', (e)->
+    s.fadeOut()
+
   return
