@@ -11,6 +11,7 @@ class MediaController extends EventEmitter
     autoplay: false
     preload: false
     loop: true
+    volume: 1
 
   # Events
   events:
@@ -84,6 +85,9 @@ class MediaController extends EventEmitter
 
   # Load
   load: (src)->
+    # set default volume level
+    @media.volume = @options.volume
+
     @media.addEventListener @events.LOAD_START, (e)=>
         @media_LoadStart e
         return
@@ -249,6 +253,7 @@ class MediaController extends EventEmitter
 
   # Error
   media_Error: (e)->
+    throw new Error('File not found')
     @.emit @events.ERROR, e
 
   # Emptied

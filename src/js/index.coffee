@@ -3,7 +3,8 @@ $ = require('jquery')
 SoundController = require './SoundController.coffee'
 
 
-s = new SoundController 'test.mp3',
+s = new SoundController
+  src: ['test.ogg', 'test.mp3']
   autoplay: false
   preload: true
 
