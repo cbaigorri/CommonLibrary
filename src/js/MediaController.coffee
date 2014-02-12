@@ -86,6 +86,7 @@ class MediaController extends EventEmitter
   # Get Playable Source
   getPlaybleSource: (t)->
     codecs =
+      # audio
       mp3: !!t.canPlayType('audio/mpeg;').replace(/^no$/, '')
       opus: !!t.canPlayType('audio/ogg; codecs="opus"').replace(/^no$/, '')
       ogg: !!t.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '')
@@ -93,6 +94,11 @@ class MediaController extends EventEmitter
       m4a: !!(t.canPlayType('audio/x-m4a;') || t.canPlayType('audio/aac;')).replace(/^no$/, '')
       mp4: !!(t.canPlayType('audio/x-mp4;') || t.canPlayType('audio/aac;')).replace(/^no$/, '')
       weba: !!t.canPlayType('audio/webm; codecs="vorbis"').replace(/^no$/, '')
+      # video
+      webm: !!(t.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/, '')
+      mp4: !!(t.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/^no$/, '')
+      ogv: !!(t.canPlayType('video/ogg; codecs="theora, vorbis"').replace(/^no$/, '')
+
     t = null
 
     if _.isArray(src)
