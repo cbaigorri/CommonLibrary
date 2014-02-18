@@ -4,7 +4,11 @@ VideoController = require './libs/VideoController.coffee'
 
 
 s = new VideoController
-  src: ['media/test.ogg', 'media/test.mp3']
+  src: [
+    'http://cdn-1.metacdn.net/jumipqxo/50OUEm/20120318032304_trailer1080p_ogg-MEDIUM.webm'
+    'http://cdn-1.metacdn.net/jumipqxo/5I9Wdx/20120318032304_trailer1080p_ogg-MEDIUM.ogv'
+    'http://cdn-1.metacdn.net/jumipqxo/5UP73g/20120318032304_trailer1080p_ogg-MEDIUM.mp4'
+  ]
   autoplay: false
   preload: true
 
