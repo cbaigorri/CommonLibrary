@@ -38,7 +38,7 @@ module.exports = (grunt) ->
     clean:
       build: ['build']
       release: ['release']
-      releaseExtras: ['release/css/style.css', 'release/js/bundle.js']
+      releaseExtras: ['release/css/style.css', 'release/js/bundle-sound.js', 'release/js/bundle-video.js']
 
     #Jade
     jade:
@@ -47,6 +47,8 @@ module.exports = (grunt) ->
           pretty: true
         files:
           'build/index.html': 'src/index.jade'
+          'build/sound.html': 'src/sound.jade'
+          'build/video.html': 'src/video.jade'
       release:
         options:
           pretty: false
@@ -74,8 +76,11 @@ module.exports = (grunt) ->
     browserify:
       dist:
         files:
-          'build/js/bundle.js': [
-            'src/js/index.coffee'
+          'build/js/bundle-sound.js': [
+            'src/js/demo-sound.coffee'
+          ]
+          'build/js/bundle-video.js': [
+            'src/js/demo-video.coffee'
           ]
         options:
           transform: ['coffeeify']
@@ -87,7 +92,8 @@ module.exports = (grunt) ->
         globals:
           jQuery: true
       all: [
-        'build/bundle.js'
+        'build/bundle-sound.js'
+        'build/bundle-video.js'
       ]
 
     # Coffee Lint
@@ -131,7 +137,7 @@ module.exports = (grunt) ->
       build:
         expand: true
         cwd: 'src/'
-        src: ['**/*.{html,png,jpg,gif,mp3}']
+        src: ['**/*.{html,png,jpg,gif,mp3,ogg}']
         dest: 'build/'
       release:
         expand: true
@@ -143,7 +149,8 @@ module.exports = (grunt) ->
     uglify:
       release:
         files:
-          'release/js/bundle.min.js': ['release/js/bundle.js']
+          'release/js/bundle-sound.min.js': ['release/js/bundle-sound.js']
+          'release/js/bundle-video.min.js': ['release/js/bundle-video.js']
 
     # Process HTML
     processhtml:

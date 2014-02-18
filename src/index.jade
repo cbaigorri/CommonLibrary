@@ -2,29 +2,17 @@ doctype html
 html
   head
     meta(charset="utf-8")
-    title Sound Controller
+    title Common Library
     include includes/head
   body
-    h1 Sound Controller
+    h1 Common Library
     ul
       li
-        a.load(href="#") Load
+        h3
+          a(href="/sound.html") Sound Controller
       li
-        a.play(href="#") Play
-      li
-        a.pause(href="#") Pause
-      li.timeupdate
-        span.elapsed 0:00
-        | /
-        span.duration 0:00
-      li
-        input.volume(type="range", min="0.0", max="1.0", step="0.05")
-      li
-        input.seek(type="range", min="0", max="1", step="0.05", value="0")
-      li
-        a.fadeIn(href="#") Fade In
-      li
-        a.fadeOut(href="#") Fade Out
+        h3
+          a(href="/video.html") Video Controller
 
     // build:js /js/bundle.min.js
     script(src="/js/bundle.js")
