@@ -7,17 +7,9 @@ module.exports = (grunt) ->
     watch:
       src:
         options:
-          livereload: false
+          livereload: 35728
         files: ['src/**/*.{js,coffee}']
         tasks: ['compile']
-      # Live reload
-      livereload:
-        options:
-          dateFormat: (time) ->
-            grunt.log.writeln 'Watch finished in ' + time + 'ms at ' + (new Date()).toString()
-            grunt.log.writeln 'Waiting for changes...'
-          livereload: true
-        files: ['build/**/*']
 
     # Coffee Lint
     coffeelint:
