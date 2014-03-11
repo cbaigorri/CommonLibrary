@@ -13,11 +13,23 @@ class VideoController extends MediaController
   # Load
   load: (src)->
     @media = document.createElement 'video'
-    #@getPlaybleSource()
+    container = document.getElementById @options.el
+    playableSource = @getPlaybleSource()
+
+    container.appendChild @media
+
+    @media.setAttribute 'src', playableSource
+
+    console.log 'load', container, @media
+
+    # poster if requested
+    @media.setAttribute 'poster', @options.poster if @options.poster && @options.poster != ''
+
     super
 
   # Get Playable Source
   getPlaybleSource: ()->
-    super new Video()
+    videoElement = document.createElement 'video'
+    super videoElement
 
 module.exports = VideoController

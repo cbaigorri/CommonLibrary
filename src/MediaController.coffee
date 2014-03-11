@@ -4,8 +4,6 @@ EventEmitter = require('events').EventEmitter
 
 class MediaController extends EventEmitter
 
-  constructor: ()->
-
   # Options
   options:
     autoplay: false
@@ -38,6 +36,8 @@ class MediaController extends EventEmitter
     RATE_CHANGE: 'ratechange'
     RESIZE: 'resize'
     VOLUME_CHANGE: 'volumechange'
+
+  constructor: ()->
 
   # Play
   play: ()->
@@ -119,6 +119,9 @@ class MediaController extends EventEmitter
   load: ()->
     # set default volume level
     @media.volume = @options.volume
+
+    # preload if requested
+    @media.setAttribute 'preload', 'auto' if @options.preload
 
     @media.addEventListener @events.LOAD_START, (e)=>
         @media_LoadStart e
