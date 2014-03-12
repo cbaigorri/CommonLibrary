@@ -36,6 +36,13 @@ class MediaController extends EventEmitter
     RATE_CHANGE: 'ratechange'
     RESIZE: 'resize'
     VOLUME_CHANGE: 'volumechange'
+    FULLSCREEN_CHANGE: 'fullscreenchange'
+    BEGIN_FULLSCREEN: 'beginfullscreen'
+    END_FULLSCREEN: 'endfullscreen'
+    WEBKIT_FULLSCREEN_CHANGE: 'webkitfullscreenchange'
+    MOZ_FULLSCREEN_CHANGE: 'mozfullscreenchange'
+    WEBKIT_BEGIN_FULLSCREEN: 'webkitbeginfullscreen'
+    WEBKIT_END_FULLSCREEN: 'webkitendfullscreen'
 
   constructor: ()->
 
